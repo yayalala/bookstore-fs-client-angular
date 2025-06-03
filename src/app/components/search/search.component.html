@@ -1,0 +1,60 @@
+<!-- search.component.html -->
+<div class="search-page">
+
+  <h2 *ngIf="searchQuery !== ''">Search Results for "{{ searchQuery }}" :</h2>
+
+  <div *ngIf="books.length > 0; else noResultsFound" class="search-results">
+    <app-book *ngFor="let book of currentPageBooks" [book]="book" class="book-card">
+      <div class="buttons-panel">
+        <button [routerLink]="['/book', book.id]">View Details</button>
+        <div class="item-cart-control">
+          <button *ngIf="!currentUser; else addToCartButton" class="disabled-button">
+            <a 
+              *ngIf="!currentUser; else addToCartButton" 
+              title="login" 
+              routerLink="/account"
+              >Login</a> to add to cart
+          </button>
+          <ng-template #addToCartButton>
+            <button 
+              *ngIf="currentUser!.cart!.length === 0 || !doesBookExistInCart(book.id);else itemInCartHandler" 
+              (click)="addToCart(book.id)" 
+              class="add-first-item-to-cart"
+              >
+              Add to cart
+            </button>
+            <ng-template #itemInCartHandler>
+              <div class="in-cart-item-handler">
+                <button (click)="removeFromCart( book.id )" class="in-cart-item-button icon">
+                  <img src="../../../assets/icons/delete_icon.png" class="in-cart-item-icon" alt="">
+                </button>
+                <button (click)="decreaseQuantityInCart( book.id )" class="in-cart-item-button text">
+                  <b>-</b>
+                </button>
+                <b class="in-cart-items-counter">
+                  {{getItemQuantityInCart(book.id)}}<br>In cart
+                </b>
+                <button (click)="addToCart( book.id )" class="in-cart-item-button text">
+                  <b>+</b>
+                </button>
+              </div>
+            </ng-template>
+          </ng-template>
+        </div>
+      </div>
+    </app-book>
+  </div>
+
+  <div class="pagination">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{currentPage}} of {{totalPages}}</span>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+
+  <ng-template #noResultsFound>
+    <p>No books found for "{{ searchQuery }}"</p>
+  </ng-template>
+  
+
+</div>
+  

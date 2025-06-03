@@ -1,0 +1,78 @@
+<div class="admin-dashboard">
+    <h2>Admin Dashboard</h2>
+
+    <div class="admin-details">
+        <h3>Admin details :</h3>
+        <div class="property-value-pair">
+            <div class="property-name">Name :</div>
+            <div>{{currentAdmin?.username}}</div>
+        </div>
+        <div class="property-value-pair">
+            <div class="property-name">Email :</div>
+            <div>{{currentAdmin?.email}}</div>
+        </div>
+        <div class="admin-control-panel">
+            <button (click)="logoutFromAccount()">Logout</button>
+            <button (click)="isInAdminEditMode = true">Update Account Details</button>
+        </div>
+    </div>
+
+    <div *ngIf="isInAdminEditMode" class="modal-screen admin-edit-screen">
+        <app-custom-form 
+          (closeForm)="toggleAdminEditForm()" 
+          (formSubmitted)="validateUserUniqueFields($event)"
+          [customFormBuildingInstructions]="userEditFormBuildingInstructions" 
+          [uniqueValuesErrorsFromParent]="uniqueValuesErrors"
+          >
+        </app-custom-form>
+    </div>
+
+    
+
+    <div class="existing-books">
+        <h3>Current books in store :</h3>
+        <button (click)="toggleBookAddForm()" class="add-book-button">Add New Book</button>
+        <div class="books-db-search-bar">
+            <label for="db-search-bar-input">Search books in store db :</label>
+            <input type="text" name="db-search-bar-input" [(ngModel)]="dbSearchQuery" (input)="onSearch()">
+        </div>
+        <div class="books-list">
+            <app-book *ngFor="let bookItem of availableBooks" [book]="bookItem" [bookCardView]="'dbTableRow'" class="book-data-item">
+                <div class="book-details">
+                    {{bookItem.details}}
+                </div>
+                <div class="control-panel">
+                    <button title="Edit Book Details" (click)="toggleBookEditForm( bookItem )">
+                        <img src="../../../../assets/icons/edit.png" alt="edit-icon" class="icon-for-mobiles">
+                        <p class="text-for-desktops">Edit</p>
+                    </button>
+                    <button title="Remove Book From Store" (click)="deleteBook( bookItem.id )">
+                        <img src="../../../../assets/icons/delete_icon.png" alt="delete-icon" class="icon-for-mobiles">
+                        <p class="text-for-desktops">Edit</p>
+                    </button>
+                </div>
+            </app-book>
+        </div>
+    </div>
+
+    <div *ngIf="isInBookEditMode" class="modal-screen book-edit-screen">
+        <app-custom-form 
+          (closeForm)="toggleBookEditForm( bookForEdit )" 
+          (formSubmitted)="onBookEditSubmit($event)"
+          [customFormBuildingInstructions]="bookEditFormBuildingInstructions" 
+          [generalErrorsFromParent]="generalErrors"
+          >
+        </app-custom-form>        
+    </div>
+
+    <div *ngIf="isInBookAddingMode" class="modal-screen book-edit-screen">
+        <app-custom-form 
+          (closeForm)="toggleBookAddForm()" 
+          (formSubmitted)="onAddNewBookSubmit($event)"
+          [customFormBuildingInstructions]="bookEditFormBuildingInstructions" 
+          [generalErrorsFromParent]="generalErrors"
+          >
+        </app-custom-form>
+    </div>
+    
+</div>

@@ -1,0 +1,54 @@
+<!-- home.component.html -->
+
+
+<div *ngIf="books.length" class="books-home-view">
+
+  <div class="books-grid">
+    <app-book *ngFor="let bookItem of currentPageBooks" [book]="bookItem" class="book-card">
+        <div class="buttons-panel">
+          <button [routerLink]="['/book', bookItem.id]">View Details</button>
+          <div class="item-cart-control">
+            <button *ngIf="!currentUser; else addToCartButton" class="disabled-button">
+              <a 
+                *ngIf="!currentUser; else addToCartButton" 
+                title="login" 
+                routerLink="/account"
+                >Login</a> to add to cart
+            </button>
+            <ng-template #addToCartButton>
+              <button 
+                *ngIf="currentUser!.cart!.length === 0 || !doesBookExistInCart(bookItem.id);else itemInCartHandler" 
+                (click)="addToCart(bookItem.id)" 
+                class="add-first-item-to-cart"
+                >
+                Add to cart
+              </button>
+              <ng-template #itemInCartHandler>
+                <div class="in-cart-item-handler">
+                  <button (click)="removeFromCart( bookItem.id )" class="in-cart-item-button icon">
+                    <img src="../../../assets/icons/delete_icon.png" class="in-cart-item-icon" alt="">
+                  </button>
+                  <button (click)="decreaseQuantityInCart( bookItem.id )" class="in-cart-item-button text">
+                    <b>-</b>
+                  </button>
+                  <b class="in-cart-items-counter">
+                    {{getItemQuantityInCart(bookItem.id)}}<br>In cart
+                  </b>
+                  <button (click)="addToCart( bookItem.id )" class="in-cart-item-button text">
+                    <b>+</b>
+                  </button>
+                </div>
+              </ng-template>
+            </ng-template>
+          </div>
+        </div>
+    </app-book>
+  </div>
+
+  <div class="pagination">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{currentPage}} of {{totalPages}}</span>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+  
+</div>

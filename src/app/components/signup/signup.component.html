@@ -1,0 +1,54 @@
+<div class="signup-page">
+  <app-custom-form
+    (formSubmitted)="onSubmit($event)"
+    [customFormBuildingInstructions]="buildingInstructionsForUserSignupForm" 
+    [uniqueValuesErrorsFromParent]="uniqueValuesErrors"
+    >
+
+  </app-custom-form>
+  <!-- <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+      <h2>Sign Up</h2>
+  
+      <div class="input-container">
+        <label for="username">Username:</label>
+        <input id="username" type="text" formControlName="username">
+        <div 
+          *ngIf="!username?.value && username?.touched"
+          class="input-error-message"
+          >
+          Username is required.
+        </div>
+        <div 
+          *ngIf="username?.errors?.['usernameExists'] && ( username?.touched || username?.dirty )"
+          class="input-error-message"
+          >
+          Username already exists. Please try another username.
+        </div>
+      </div>
+    
+      <div class="input-container">
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password">
+        <div 
+          *ngIf="!password?.valid && ( password?.touched || password?.dirty )"
+          class="input-error-message"
+          >
+          Password is required.
+        </div>
+      </div>
+    
+      <div class="input-container">
+        <label for="repeatPassword">Repeat Password:</label>
+        <input id="repeatPassword" type="password" formControlName="repeatPassword">
+        <div 
+          *ngIf="repeatPassword?.errors?.['passwordsMismatchError'] && ( repeatPassword?.touched || repeatPassword?.dirty )"
+          class="input-error-message"
+          >
+          Passwords dont match.
+        </div>
+      </div>
+    
+      <button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+  </form> -->
+</div>

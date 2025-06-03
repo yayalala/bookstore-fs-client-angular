@@ -1,0 +1,72 @@
+.book-details-page-item {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 0.125rem solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 2rem;
+
+}
+
+.book-basic-info {
+  display: flex;
+  width: 100%;
+  height: 10rem;
+}
+
+.book-basic-info {
+  font-size: 1rem;
+}
+
+
+.item-cart-control {
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.item-cart-control *{
+  height: 100%;
+}
+
+.in-cart-item-handler {
+  border-radius: 0.5rem;
+  background: skyblue;
+  padding: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.in-cart-item-handler button {
+  padding: 0.25rem;
+}
+
+.in-cart-item-handler button img {
+  margin: 0;
+}
+
+.in-cart-items-counter {
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.disabled-button {
+  background: lightgray;
+  color: gray;
+  cursor: default;
+}
+
+.disabled-button a {
+  font-weight: bold;
+  color: blue;
+}

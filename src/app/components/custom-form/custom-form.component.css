@@ -1,0 +1,111 @@
+form {
+  width: 100vw;
+  max-width: 400px;
+  border: solid 0.25rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-input-fieldset {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-input-fieldset > * {
+  width: 100%;
+}
+
+.error-message {
+  color: red;
+  padding: 0 0.25rem;
+}
+
+.form-buttons-panel {
+  padding: 2rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.form-buttons-panel button {
+  padding: 1rem 0;
+  width: 30%;
+  height: 2rem;
+  border-radius: 0.5rem;
+  font-family: serif;
+  font-size: medium;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-buttons-panel button:disabled {
+  background-color: gainsboro;
+  color: gray;
+}
+
+/* themes */
+
+.default-theme {
+  border: blue solid 0.25rem;
+  background-color: white;
+  color: blue;
+  /* opacity: 1; */
+}
+
+.default-theme .form-buttons-panel button {
+  color: blue;
+  background-color: white;
+  outline: blue;
+  border: solid blue 0.125rem;
+}
+
+.default-theme .form-buttons-panel button:hover , 
+.default-theme .form-buttons-panel button:focus 
+{
+  background-color: lightblue;
+  /* border: solid rgba(0, 0, 0, 1) 0.175rem; */
+}
+
+.default-theme .form-buttons-panel button:active {
+  background-color: lightskyblue;
+  /* border: solid rgba(0, 0, 0, 1) 0.175rem; */
+}
+
+
+.default-theme .form-buttons-panel button:disabled {
+  background-color: gainsboro;
+  color: gray;
+  border: solid rgba(0, 0, 0, 0) 0.175rem;
+  cursor: default;
+}
+
+
+.ocean-theme {
+  border: navy solid 0.25rem;
+  background-color: dodgerblue;
+  color: navy;
+}
+
+.ocean-theme input {
+  border-radius: 0.5rem;
+  border: skyblue solid 3px;
+  /* outline: navy solid 1px; */
+}
+
+.ocean-theme .error-message {
+  color: yellow;
+}
+
+
+.sunset-theme {
+  background: orangered;
+}
+

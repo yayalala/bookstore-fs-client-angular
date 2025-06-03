@@ -1,0 +1,151 @@
+/* search.component.css */
+
+.search-page {
+  padding: 20px;
+  width: 100%;
+  margin: 0;
+}
+
+.search-page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-results {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book-card {
+  max-width: 300px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book-card img {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+/* @media (max-width: 599px) {
+  .book-card img {
+    width: 100px;
+    height: 150px;
+  }
+} */
+
+.book-info {
+  text-align: center;
+}
+
+.book-info h3 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.book-info p {
+  /* margin: 5px 0; */
+  color: #555;
+}
+
+.book-info button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.book-info button:hover {
+  background-color: #0056b3;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.pagination button {
+  margin: 0 10px;
+  padding: 5px 10px;
+}
+
+.pagination span {
+  margin: 0 10px;
+}
+
+
+
+.buttons-panel {
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.buttons-panel *{
+  height: 100%;
+}
+
+.in-cart-item-handler {
+  border-radius: 0.5rem;
+  background: skyblue;
+  padding: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.in-cart-item-handler button {
+  padding: 0.25rem;
+}
+
+.in-cart-item-handler button img {
+  margin: 0;
+}
+
+.in-cart-items-counter {
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.buttons-panel .disabled-button {
+  background: lightgray;
+  color: gray;
+  cursor: default;
+  display: inline;
+  height: 100%;
+  width: fit-content
+}
+
+
+.disabled-button a {
+  font-weight: bold;
+  color: blue;
+}
+

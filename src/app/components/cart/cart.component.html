@@ -1,0 +1,62 @@
+<!-- cart.component.html -->
+<div>
+
+
+  <div *ngIf="currentUser; else notLoggedIn" class="cart-container">
+
+    <h2>Your Cart :</h2>
+
+    <div *ngIf="currentUser.cart.length > 0; else emptyCart" class="cartView">
+      <button (click)="clearCart()">Clear Cart</button>
+      <div class="cart-items-list">
+        <app-book *ngFor="let cartItem of currentUser.cart" [book]="cartItem.book" [bookCardView]="'landscape'" class="cart-item">
+          <div class="itemTotalPriceView buttons-panel">
+            <button [routerLink]="['/book', cartItem.book.id]">View Details</button>
+            <div class="quantity-control-panel">
+              <button (click)="decreaseQuantityByOne( cartItem.book.id )">-</button>
+              <div class="quantity-view">{{cartItem.quantity}}</div>
+              <button (click)="increaseQuantityByOne( cartItem.book.id )">+</button>
+            </div>
+            <button (click)="removeFromCart( cartItem.book.id )">Remove From Cart</button>
+            <div class="subtotal-view">
+              Item Subtotal : {{cartItem.quantity * getCartItemDiscountedPrice( cartItem ) }}$
+            </div>
+          </div>
+        </app-book>
+      </div>
+      <h2>
+        Cart Total : {{ cartTotal }}$
+      </h2>
+      <button (click)="checkout()">Checkout</button>
+      <div class="modal-screen" *ngIf="checkoutClicked">
+        <div class="checkout-screen-message">
+          <div class="thankyou-message" *ngIf="checkoutConfirmed">
+            Thank you for buying your books at our book store <br>
+            :)
+          </div>
+          <div class="main-message">{{checkoutMessage}}</div>
+          <div class="responses-buttons" *ngIf="!checkoutConfirmed">
+            <button (click)="confirmCheckout()">Yes</button>
+            <button (click)="cancelCheckout()">No</button>
+          </div>
+          <div class="responses-buttons" *ngIf="checkoutConfirmed">
+            <button (click)="acceptCheckoutMessage()">OK</button>
+            <button (click)="acceptCheckoutMessage()">No, thank you for having such an awesome book store ! :D</button>
+            <button (click)="acceptCheckoutMessage()">Wait, What ?????</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #emptyCart>
+      <p>Your cart is empty.</p>
+    </ng-template>
+
+  </div>
+
+  <ng-template #notLoggedIn>
+    <p>You must <a *ngIf="!currentUser" title="login" routerLink="/account">login</a> to use the cart</p>
+  </ng-template>
+
+</div>
+  

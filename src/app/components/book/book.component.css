@@ -1,0 +1,102 @@
+img {
+    max-width: 100%;
+    max-height: 100%;
+    /* height: auto; */
+    display: block;
+}
+
+.book-details {
+    font-size: 0.75rem;
+    overflow: auto;
+    width: 25%;
+    height: 100%;
+    padding: 1rem;
+}
+
+:host img.landscape , :host img.dbTableRow {
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+}
+
+:host img.portrait {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+
+.book-basic-info {
+    padding: 0.1rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* font-size: 100%; */
+    gap: 0.1rem;
+}
+
+.book-basic-info.landscape , .book-basic-info.dbTableRow {
+    height: 100%;
+}
+
+.book-basic-info * {
+    text-align: center;
+    font-size: 100%;
+}
+
+.book-basic-info.dbTableRow {
+    overflow: auto;
+}
+
+
+.book-basic-info.dbTableRow * {
+    padding: 0.05rem;
+    font-size: 0.6rem;
+}
+
+@media only screen and (min-width: 768px) {
+    /* Styles for screens smaller than 768px */
+    .book-basic-info.dbTableRow * {
+        font-size: 1rem;
+    }
+}
+
+.book-discounted-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+.book-basic-info.dbTableRow .book-discounted-price * {
+    font-size: 0.75rem;
+}
+
+@media only screen and (min-width: 768px) {
+    /* Styles for screens smaller than 768px */
+
+    .book-discounted-price {
+        gap: 0.5rem;
+    }
+
+    .book-basic-info.dbTableRow .book-discounted-price * {
+        font-size: 1rem;
+    }
+}
+
+.book-discounted-price b {
+    color: black;
+    background-color: yellow;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+p {
+    margin: 0;
+    color: #666;
+}
+  

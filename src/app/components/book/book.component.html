@@ -1,0 +1,14 @@
+<img [ngClass]="bookCardView" [src]="book.imageUrl" alt="{{ book.title }}">
+<div class="book-basic-info" [ngClass]="bookCardView">
+  <h3>{{ book.title }}</h3>
+  <p>{{ book.author }}</p>
+  <div *ngIf="isBookOnDiscount; else regularPrice" class="book-discounted-price">
+    <p><del>{{ book.price }}$</del></p>
+    <p><b>{{ bookDiscountedPrice }}$</b></p>
+  </div>
+  <ng-template #regularPrice>
+    <p>{{ book.price }}$</p>
+  </ng-template>
+</div>
+<ng-content></ng-content>
+  

@@ -1,0 +1,149 @@
+/* home.component.css */
+
+.books-home-view{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.books-grid {
+  /* display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+  gap: 2rem;
+  padding: 2rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+.book-card {
+  width: 18rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+
+.book-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.buttons-panel{
+  height: 2rem;
+  padding: 0 0.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.buttons-panel > * {
+  height: 100%;
+  padding: 0 0.5rem;
+}
+
+.disabled-button {
+  background: lightgray;
+  color: gray;
+  cursor: default;
+}
+
+.disabled-button a {
+  font-weight: bold;
+  color: blue;
+}
+
+
+.item-cart-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.in-cart-item-handler {
+  background-color: skyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+
+.in-cart-item-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
+}
+
+.in-cart-item-button.icon{
+  height: 100%;
+}
+
+.in-cart-item-button *{
+  height: 100%;
+}
+
+.in-cart-items-counter {
+  padding: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.pagination button {
+  margin: 0 10px;
+  padding: 5px 10px;
+}
+
+.pagination span {
+  margin: 0 10px;
+}
+
+
+/* 
+.book-card button {
+  background: dodgerblue;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.book-card button:hover {
+  background: royalblue;
+}
+
+.book-card button:active {
+  background: navy;
+  transition-duration: 0.25s;
+}
+ */

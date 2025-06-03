@@ -1,0 +1,18 @@
+<div class="admin-login-page">
+    <h2>Admin Login</h2>
+    <form (ngSubmit)="login()">
+      <div class="label-input-pair">
+        <label for="email">Email:</label>
+        <input (input)="resetValidStatus()" type="email" id="email" [(ngModel)]="email" name="email" required>
+      </div>
+      <div class="label-input-pair">
+        <label for="password">Password:</label>
+        <input (input)="resetValidStatus()" type="password" id="password" [(ngModel)]="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <div *ngIf="!isSubmissionValid" class="error-message">
+      Invalid admin credentials
+    </div>
+</div>
+  

@@ -1,0 +1,114 @@
+<div class="account-page">
+  <h2>Your Account</h2>
+  <h3>Account Details</h3>
+  <div class="property-value-pair">
+    <div class="property-name">Name :</div>
+    <div>{{currentUser?.username}}</div>
+  </div>
+  <div class="property-value-pair">
+    <div class="property-name">Email:</div>
+    <div>{{currentUser?.email}}</div>
+  </div>
+
+  <div *ngIf="isInEditMode" class="account-edit-screen modal-screen">
+    <app-custom-form 
+      (closeForm)="toggleForm()" 
+      (formSubmitted)="validateUniqueFields($event)"
+      [customFormBuildingInstructions]="userFormBuildingInstructions" 
+      [uniqueValuesErrorsFromParent]="uniqueValuesErrors"
+      >
+    </app-custom-form>
+    <!-- <form (ngSubmit)="updateAccount()">
+      <h3>Update your account details :</h3>
+
+      <div class="property-value-pair">
+        <label>Name:</label>
+        <input type="text" [(ngModel)]="updatedUser!.username" name="name">
+      </div>
+      
+      <div class="property-value-pair">
+        <label>Email:</label>
+        <input type="email" [(ngModel)]="updatedUser!.email" name="email">
+      </div>
+      
+      <div class="property-value-pair">
+        <label>Password:</label>
+        <input type="password" [(ngModel)]="updatedUser!.password" #password name="password">
+      </div>
+      
+      <div class="property-value-pair">
+        <label>Repeat Password:</label>
+        <input type="password" name="repeatPassword" #repeatPassword >
+        <div 
+          class="validation-error" 
+          *ngIf="
+            repeatPassword.value !== '' && 
+            currentUser!.password !== updatedUser!.password && 
+            repeatPassword !== password
+            "
+          >
+          passwords must match in order to change current password
+        </div>
+      </div>
+
+      <div class="edit-screen-control-panel">
+        <button type="submit">Update</button>
+        <button type="" (click)="cancelAccountEdits()">Cancel</button>
+      </div>
+      
+    </form> -->
+  </div>
+
+  <div *ngIf="currentUser && !currentUser.isAdmin" class="account-control-panel">
+    <button (click)="logoutFromAccount()">Logout</button>
+    <button (click)="isInEditMode = true">Update Account Details</button>
+    <button (click)="deleteAccount()">Delete Account</button>
+  </div>  
+  
+</div>
+
+<!-- <form [formGroup]="editForm!" (ngSubmit)="onSubmit()">
+
+  <h2>Sign Up</h2>
+
+  <div class="input-container">
+    <label for="username">Username:</label>
+    <input id="username" type="text" formControlName="username">
+    <div 
+      *ngIf="!username?.value && username?.touched"
+      class="input-error-message"
+      >
+      Username is required.
+    </div>
+    <div 
+      *ngIf="username?.errors?.['usernameExists'] && ( username?.touched || username?.dirty )"
+      class="input-error-message"
+      >
+      Username already exists. Please try another username.
+    </div>
+  </div>
+
+  <div class="input-container">
+    <label for="password">Password:</label>
+    <input id="password" type="password" formControlName="password">
+    <div 
+      *ngIf="!password?.valid && ( password?.touched || password?.dirty )"
+      class="input-error-message"
+      >
+      Password is required.
+    </div>
+  </div>
+
+  <div class="input-container">
+    <label for="repeatPassword">Repeat Password:</label>
+    <input id="repeatPassword" type="password" formControlName="repeatPassword">
+    <div 
+      *ngIf="repeatPassword?.errors?.['passwordsMismatchError'] && ( repeatPassword?.touched || repeatPassword?.dirty )"
+      class="input-error-message"
+      >
+      Passwords dont match.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+</form> -->

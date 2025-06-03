@@ -1,0 +1,40 @@
+<form 
+  [formGroup]="customForm" 
+  class="custom-form" 
+  [ngClass]="customFormBuildingInstructions.styleClasses"
+  (ngSubmit)="onSubmit()"
+  >
+  <h2 class="form-header">{{customFormBuildingInstructions.formHeader}}</h2>
+  <div *ngFor="let customFormInput of customFormBuildingInstructions.inputs" class="form-input-fieldset">
+    <label [for]=customFormInput.nameInCamelCase>{{customFormInput.label}}</label>
+    <input
+      [formControlName]=customFormInput.nameInCamelCase
+      [type]="customFormInput.type"
+      (input)="resetGeneralFormErrors()"
+      />
+    <ng-container 
+      *ngIf="customForm.get(customFormInput.nameInCamelCase)?.errors && 
+      ( customForm.get(customFormInput.nameInCamelCase)?.touched || 
+      customForm.get(customFormInput.nameInCamelCase)?.dirty )"
+      >
+      <div class="error-message" *ngFor="let errorMessage of getControlErrorMessages(customFormInput.nameInCamelCase)">
+        {{errorMessage}}
+      </div>
+    </ng-container>
+    <div 
+      class="error-message"
+      *ngIf="uniqueValuesErrorsFromParent.includes(customFormInput.nameInCamelCase)"
+    >
+      {{customFormInput.label}} already exists .
+    </div>
+  </div>
+  <div class="error-message" *ngFor="let errorMessage of generalErrorsFromParent">
+    {{errorMessage}}
+  </div>
+  <div class="form-buttons-panel">
+    <button type="submit" [disabled]="customForm.invalid">{{buttonsNamesFromParent.submitButtonName}}</button>
+    <button type="reset" (click)="resetValidatorsValues()">{{buttonsNamesFromParent.resetButtonName}}</button>
+    <button type="button" (click)="close()">{{buttonsNamesFromParent.cancelButtonName}}</button>
+  </div>
+  
+</form>
