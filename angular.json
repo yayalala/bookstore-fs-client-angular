@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "bookstore-app": {
+    "bookstore-fs-client-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/bookstore-app",
+            "outputPath": "dist/bookstore-fs-client-angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "bookstore-app:build:production"
+              "buildTarget": "bookstore-fs-client-angular:build:production"
             },
             "development": {
-              "buildTarget": "bookstore-app:build:development"
+              "buildTarget": "bookstore-fs-client-angular:build:development"
             }
           },
           "defaultConfiguration": "development"

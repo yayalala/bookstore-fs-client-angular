@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'bookstore-app'`, () => {
+  it(`should have as title 'bookstore-fs-client-angular'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('bookstore-app');
+    expect(app.title).toEqual('bookstore-fs-client-angular');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, bookstore-app');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, bookstore-fs-client-angular');
   });
 });
